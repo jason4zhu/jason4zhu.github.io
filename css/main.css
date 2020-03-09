@@ -1109,7 +1109,7 @@ pre .javascript .function {
 }
 .sidebar-inner {
   color: #999;
-  padding: 18px 10px;
+  padding: 18px 0px;
   text-align: center;
 }
 .cc-license {
@@ -1160,7 +1160,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #17160f;
+  background: #d05936;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1281,6 +1281,7 @@ pre .javascript .function {
 }
 .post-toc {
   font-size: 0.875em;
+  padding: 0 10px;
 }
 .post-toc ol {
   list-style: none;
@@ -1353,7 +1354,7 @@ pre .javascript .function {
   }
 }
 .with-love {
-  color: #808080;
+  color: #5cafff;
   display: inline-block;
   margin: 0 5px;
 }
