@@ -22,9 +22,9 @@
 
   <meta name="description" content="Di Zhu, data architect, outdoor enthusiasts, introspectionist">
 <meta property="og:type" content="website">
-<meta property="og:title">
+<meta property="og:title" content="朱迪">
 <meta property="og:url" content="https://dzhu.pro/archives/index.html">
-<meta property="og:site_name">
+<meta property="og:site_name" content="朱迪">
 <meta property="og:description" content="Di Zhu, data architect, outdoor enthusiasts, introspectionist">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="朱迪">
@@ -44,7 +44,7 @@
   };
 </script>
 
-  <title>归档 | </title>
+  <title>归档 | 朱迪</title>
   
 
 
@@ -85,9 +85,13 @@
       <div class="header-inner"><div class="site-brand-container">
 
   
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+  <a href="/" rel="section">
     <img class="site-author-image" itemprop="image" alt="朱迪" src="/images/avatar.jpg">
-  <p class="site-author-name" itemprop="name">朱迪</p>
+  </a>
+  <a href="/" rel="section">
+    <p class="site-author-name" itemprop="name">朱迪</p>
+  </a>
   <div class="site-description" itemprop="description">Di Zhu, data architect, outdoor enthusiasts, introspectionist</div>
 </div>
 
@@ -108,7 +112,7 @@
     <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title"></span>
+        <span class="site-title">朱迪</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -124,24 +128,14 @@
 <nav class="site-nav">
   
   <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
-
-  </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-monument"></i>Footprints</a>
 
   </li>
   </ul>
@@ -184,7 +178,7 @@
 
       <div class="post-meta">
         <time itemprop="dateCreated"
-              datetime="2020-03-07T10:30:56+08:00"
+              datetime="2020-03-07T10:30:00+08:00"
               content="2020-03-07">
           03-07
         </time>
@@ -269,10 +263,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Outlines
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Categories
         </li>
       </ul>
 
@@ -282,7 +276,21 @@
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+<!-- MARK: 修改了侧边栏overview内容，直接改为静态的分类（Categories）列表 -->
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+      <a href="/categories/Finance-Economics/" rel="section"><i class="fa fa-fw fa-tags"></i>经济|金融|投资</a>
+    </li>
+    <li class="menu-item">
+      <a href="/categories/Management/" rel="section"><i class="fa fa-fw fa-archive"></i>团队管理</a>
+    </li>
+  </ul>
+</nav>
+
+<!--
+<div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="朱迪"
       src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">朱迪</p>
@@ -290,7 +298,7 @@
 </div>
 
 
-
+-->
       </div>
 
     </div>
