@@ -72,7 +72,7 @@ NexT.utils.getAffixParam = function() {
   let headerOffset = document.querySelector('.header-inner').offsetHeight;
   let footerOffset = document.querySelector('.footer').offsetHeight;
 
-  document.querySelector('.sidebar').style.marginTop = 368 + 33 * Math.ceil(document.querySelectorAll('.icon-wall-icon').length / 9) + 'px';
+  document.querySelector('.sidebar').style.marginTop = 386 + 33 * Math.ceil(document.querySelectorAll('.icon-wall-icon').length / 9) + 'px';
 
   return {
     top   : headerOffset,
