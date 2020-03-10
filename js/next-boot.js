@@ -73,6 +73,34 @@ NexT.boot.registerEvents = function() {
       target && target.click();
     }
   });
+
+  var getLocation = function(href) {
+    var l = document.createElement("a");
+    l.href = href;
+    return l;
+  };
+
+  // MARK: icon-wall, when hover on icon
+  const iconWallIcons = document.querySelectorAll('.icon-wall-icon');
+  const avatarImgSrc = getLocation(document.querySelector(".site-author-image").src).pathname;
+  const authorName = document.querySelector(".site-author-name").innerHTML;
+  const selfIntro = document.querySelector(".site-description").innerHTML;
+  for (const iconWallIcon of iconWallIcons) {
+    iconWallIcon.addEventListener('mouseover', function(event) {
+      document.querySelector(".site-author-image").src = getLocation(iconWallIcon.src).pathname;
+      document.querySelector(".site-author-name").innerHTML = iconWallIcon.getAttribute('name') ? iconWallIcon.getAttribute('name') : '';
+      document.querySelector(".site-description").innerHTML = iconWallIcon.getAttribute('desc') ? iconWallIcon.getAttribute('desc') : '';
+    });
+  }
+  document.querySelector(".icon-wall").addEventListener('mouseout', function(e) {
+    var e = event.toElement || event.relatedTarget;
+    if (e.parentNode != this && e != this) {
+      document.querySelector(".site-author-image").src = avatarImgSrc;
+      document.querySelector(".site-author-name").innerHTML = authorName;
+      document.querySelector(".site-description").innerHTML = selfIntro;
+    }
+  });
+  // END
 };
 
 NexT.boot.refresh = function() {
