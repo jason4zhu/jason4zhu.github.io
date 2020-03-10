@@ -1162,7 +1162,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #7afff4;
+  background: #ffe77d;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2193,7 +2193,7 @@ ul.breadcrumb li + li:last-child {
   padding: 12px 8px 0px 8px;
 }
 .icon-wall-icon {
-  max-width: 25px;
+  max-width: 25px; /* 不要轻易改变图标大小。需要改动的话，要和这块代码联动: `document.querySelector('.sidebar').style.marginTop` */
   max-height: 25px;
   display: inline;
 }
