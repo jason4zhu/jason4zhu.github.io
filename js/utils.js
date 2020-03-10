@@ -337,7 +337,11 @@ NexT.utils = {
       sidebarNav.classList.add('motion-element');
       document.querySelector('.sidebar-nav-toc').click();
     } else {
-      sidebarNav.style.display = 'none';
+      // MARK: change index page viewing behaviour
+      sidebarNav.style.display = '';
+      document.querySelector('.sidebar-nav-toc').remove();
+      document.querySelector('.sidebar-nav-overview').style.marginLeft = '0px';
+      // END
       sidebarNav.classList.remove('motion-element');
       document.querySelector('.sidebar-nav-overview').click();
     }

@@ -948,9 +948,8 @@ pre .javascript .function {
   }
 }
 .site-brand-container {
-  display: flex;
   flex-shrink: 0;
-  padding: 0 10px;
+  width: 100%;
 }
 .headband {
   background: #222;
@@ -1126,6 +1125,9 @@ pre .javascript .function {
 .cc-license img {
   display: inline-block;
 }
+.site-author {
+  padding: 0px;
+}
 .site-author-image {
   border: 1px solid #eee;
   display: block;
@@ -1160,7 +1162,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #690e74;
+  background: #d0570a;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2175,12 +2177,25 @@ ul.breadcrumb li + li:last-child {
 }
 .site-brand-container {
   background: #fff;
-  padding: 21px 10px 5px 10px;
+  padding: 21px 0px 5px 0px;
 }
 @media (max-width: 991px) {
   .site-brand-container {
     box-shadow: 0 0 16px rgba(0,0,0,0.5);
   }
+}
+.icon-wall {
+  display: block;
+  color: #999;
+  font-size: 0.8125em;
+  margin-top: 0;
+  text-align: center;
+  padding: 12px 8px 0px 8px;
+}
+.icon-wall-icon {
+  max-width: 25px;
+  max-height: 25px;
+  display: inline;
 }
 .site-meta {
   padding: 20px 0;
