@@ -101,6 +101,26 @@ NexT.boot.registerEvents = function() {
     }
   });
   // END
+
+  // MARK: 在首页只展示每个post的思维导图（如果存在），作为excerpt
+  if(document.querySelector(".c_index_page")) {
+    const articles = document.querySelectorAll('.post-block');
+    for(const article of articles)  {
+      const bd = article.querySelector(".post-body");
+      if(bd.children && bd.children.length > 0 && bd.children[0].tagName.toLowerCase() == 'blockquote') {
+        var toDelIdx = 1;
+        while(toDelIdx < bd.children.length)  {
+          if(bd.children[toDelIdx].tagName.toLowerCase() == 'script' || bd.children[toDelIdx].tagName.toLowerCase() == 'link')  {
+            toDelIdx += 1;
+          } else{
+            bd.removeChild(bd.children[toDelIdx]);
+          }
+        }
+      }
+      console.log(bd);
+    }
+  }
+  // END
 };
 
 NexT.boot.refresh = function() {

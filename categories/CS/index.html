@@ -23,7 +23,7 @@
   <meta name="description" content="Di Zhu, data architect, outdoor enthusiasts, introspectionist.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="朱迪">
-<meta property="og:url" content="https://dzhu.pro/index.html">
+<meta property="og:url" content="https://dzhu.pro/categories/CS/index.html">
 <meta property="og:site_name" content="朱迪">
 <meta property="og:description" content="Di Zhu, data architect, outdoor enthusiasts, introspectionist.">
 <meta property="og:locale" content="zh_CN">
@@ -32,19 +32,19 @@
 <meta property="article:tag" content=" 朱迪">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://dzhu.pro/">
+<link rel="canonical" href="https://dzhu.pro/categories/CS/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
+    isHome : false,
     isPost : false
   };
 </script>
 
-  <title>朱迪</title>
+  <title>分类: CS | 朱迪</title>
   
 
 
@@ -226,239 +226,47 @@
           <div class="content">
             
 
-  <div class="c_index_page"></div>
-
-  <div class="posts-expand">
-        
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dzhu.pro/2020/03/22/101/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="朱迪">
-      <meta itemprop="description" content="Di Zhu, data architect, outdoor enthusiasts, introspectionist.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="朱迪">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/22/101/" class="post-title-link" itemprop="url">CoreCS系列：Java多线程</a>
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        <h1 class="collection-header">CS
+          <!--<small>分类</small>-->
         </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-22 10:30:00 / 修改时间：23:28:41" itemprop="dateCreated datePublished" datetime="2020-03-22T10:30:00+08:00">2020-03-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+      </div>
 
       
-          <blockquote class="pullquote mindmap mindmap-md"><ul>
-<li>Java多线程<ul>
-<li>源码阅读<ul>
-<li>Thread基础类</li>
-<li>Executor相关</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-
-<h1 id="源码阅读"><a href="#源码阅读" class="headerlink" title="源码阅读"></a>源码阅读</h1><h2 id="Thread基础类"><a href="#Thread基础类" class="headerlink" title="Thread基础类"></a>Thread基础类</h2><ul>
-<li><code>Thread</code></li>
-<li><code>Runnable</code></li>
-<li><code>Callable</code></li>
-<li><code>Future</code></li>
-</ul>
-<h2 id="Executor相关"><a href="#Executor相关" class="headerlink" title="Executor相关"></a>Executor相关</h2><ul>
-<li><code>Executor</code><pre><code>* 功能：An object that executes submitted `Runnable` tasks
-* 目的：provides a way of decoupling task submission from the mechanics of how each task will be run, including details of thread use, scheduling, etc.
-* 唯一方法：`void execute(Runnable command)`
-* 核心子接口：`ExecutorService`</code></pre></li>
-<li><code>ExecutorService</code><ul>
-<li>更丰富的<code>Executor</code>继承接口</li>
-<li>核心方法：<ul>
-<li>单个执行<ul>
-<li><code>submit</code><ul>
-<li>增强版<code>Executor.execute</code><ul>
-<li>额外提供<code>Future</code>返回值。可用于终止作业、得到作业返回值</li>
-<li>除<code>Runnable</code>对象外，同时接纳<code>Callable</code>对象</li>
-</ul>
-</li>
-<li>对于<code>Future&lt;T&gt; submit(Runnable task, T result)</code>，只是在task运行结束后，将result原封不动地封装到Future对象中<ul>
-<li>Runnable对象适配Callable实现方式：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">RunnableAdapter</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Runnable task;</span><br><span class="line">    <span class="keyword">final</span> T result;</span><br><span class="line">    RunnableAdapter(Runnable task, T result) &#123;</span><br><span class="line">        <span class="keyword">this</span>.task = task;</span><br><span class="line">        <span class="keyword">this</span>.result = result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">call</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        task.run();</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>批量执行<ul>
-<li><code>invokeAll</code>: 批量执行全部task，目标是全部完成时，返回全部<code>Future</code>（调用过程中不可修改task列表）</li>
-<li><code>invokeAny</code>: 批量执行全部task，目标是完成任意一个task时，返回对应的<code>Future</code>（其他task会被cancel）（调用过程中不可修改task列表）</li>
-</ul>
-</li>
-<li>终止Executor<ul>
-<li><code>shutdown</code>:  队列中作业可继续执行完成（但此方法不会等待，需要等待的话调用<code>awaitTermination</code>），不接受新的提交</li>
-<li><code>awaitTermination</code>: 调用<code>shutdown</code>后，等待全部作业执行完成（带timeout）</li>
-<li><code>shutdownNow</code>: 队列中作业不会执行，正在执行中的作业尝试调用<code>Thread.interrupt</code>终止</li>
-<li>终止完成时刻保证：无运行中task、无等待执行task、没有新的task可以被提交</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>工厂类：<code>Executors</code></li>
-</ul>
-</li>
-<li><code>ThreadPoolExecutor</code></li>
-</ul>
-
-<script type="text/javascript" src="/js/kity204.min.js"></script>
-<script type="text/javascript" src="/js/kityminder1450.core.min.js"></script>
-<script defer="true" type="text/javascript" src="/js/mindmap020.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/mindmap020.min.css">
-      
+    <div class="collection-year">
+      <h1 class="collection-header">2020</h1>
     </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2020-03-22T10:30:00+08:00"
+              content="2020-03-22">
+          03-22
+        </time>
+      </div>
+
+      <h2 class="post-title">
+          <a class="post-title-link" href="/2020/03/22/101/" itemprop="url">
+            <span itemprop="name">CoreCS系列：Java多线程</span>
+          </a>
+      </h2>
+
+    </header>
   </article>
-  
-  
-  
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dzhu.pro/2020/03/03/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="朱迪">
-      <meta itemprop="description" content="Di Zhu, data architect, outdoor enthusiasts, introspectionist.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="朱迪">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/03/hello-world/" class="post-title-link" itemprop="url">个人记录</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-03 23:36:00" itemprop="dateCreated datePublished" datetime="2020-03-03T23:36:00+08:00">2020-03-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-22 22:31:00" itemprop="dateModified" datetime="2020-03-22T22:31:00+08:00">2020-03-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Management/" itemprop="url" rel="index"><span itemprop="name">Management</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote class="pullquote mindmap mindmap-md"><ul>
-<li><a href="https://hunterx.xyz/hexo-simple-mindmap-plugin-intro.html" target="_blank" rel="noopener">Hexo 的思维导图插件</a><ul>
-<li>前言1</li>
-<li>使用方法1<ul>
-<li>1一</li>
-<li>1二</li>
-<li>三1</li>
-</ul>
-</li>
-<li>1太长不看1212313</li>
-<li>参考1资料</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-
-<h3 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h3><ul>
-<li>Management</li>
-<li>Finance | Economics | Investment</li>
-<li>CS</li>
-</ul>
-<h3 id="abc"><a href="#abc" class="headerlink" title="abc"></a>abc<a name="pooki1e"></a></h3>
-<script type="text/javascript" src="/js/kity204.min.js"></script>
-<script type="text/javascript" src="/js/kityminder1450.core.min.js"></script>
-<script defer="true" type="text/javascript" src="/js/mindmap020.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/mindmap020.min.css">
-      
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
+  
+  
+  
 
   
 
