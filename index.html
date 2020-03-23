@@ -256,10 +256,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-03-22 10:30:00 / 修改时间：23:28:41" itemprop="dateCreated datePublished" datetime="2020-03-22T10:30:00+08:00">2020-03-22</time>
+              <time title="创建时间：2020-03-22 10:30:00" itemprop="dateCreated datePublished" datetime="2020-03-22T10:30:00+08:00">2020-03-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-23 10:50:01" itemprop="dateModified" datetime="2020-03-23T10:50:01+08:00">2020-03-23</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -299,11 +305,14 @@
 <li><code>Callable</code></li>
 <li><code>Future</code></li>
 </ul>
-<h2 id="Executor相关"><a href="#Executor相关" class="headerlink" title="Executor相关"></a>Executor相关</h2><ul>
-<li><code>Executor</code><pre><code>* 功能：An object that executes submitted `Runnable` tasks
-* 目的：provides a way of decoupling task submission from the mechanics of how each task will be run, including details of thread use, scheduling, etc.
-* 唯一方法：`void execute(Runnable command)`
-* 核心子接口：`ExecutorService`</code></pre></li>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><ul>
+<li><code>Executor</code><ul>
+<li>功能：An object that executes submitted <code>Runnable</code> tasks</li>
+<li>目的：provides a way of decoupling task submission from the mechanics of how each task will be run, including details of thread use, scheduling, etc.</li>
+<li>唯一方法：<code>void execute(Runnable command)</code></li>
+<li>核心子接口：<code>ExecutorService</code></li>
+</ul>
+</li>
 <li><code>ExecutorService</code><ul>
 <li>更丰富的<code>Executor</code>继承接口</li>
 <li>核心方法：<ul>
@@ -315,7 +324,7 @@
 </ul>
 </li>
 <li>对于<code>Future&lt;T&gt; submit(Runnable task, T result)</code>，只是在task运行结束后，将result原封不动地封装到Future对象中<ul>
-<li>Runnable对象适配Callable实现方式：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">RunnableAdapter</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Runnable task;</span><br><span class="line">    <span class="keyword">final</span> T result;</span><br><span class="line">    RunnableAdapter(Runnable task, T result) &#123;</span><br><span class="line">        <span class="keyword">this</span>.task = task;</span><br><span class="line">        <span class="keyword">this</span>.result = result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">call</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        task.run();</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Runnable对象适配Callable实现方式：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> &lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Runnable task;</span><br><span class="line">    <span class="keyword">final</span> T result;</span><br><span class="line">    RunnableAdapter(Runnable task, T result) &#123;</span><br><span class="line">        <span class="keyword">this</span>.task = task;</span><br><span class="line">        <span class="keyword">this</span>.result = result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">call</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        task.run();</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
@@ -395,7 +404,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-22 22:31:00" itemprop="dateModified" datetime="2020-03-22T22:31:00+08:00">2020-03-22</time>
+                <time title="修改时间：2020-03-23 10:46:34" itemprop="dateModified" datetime="2020-03-23T10:46:34+08:00">2020-03-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -419,7 +428,7 @@
 
       
           <blockquote class="pullquote mindmap mindmap-md"><ul>
-<li><a href="https://hunterx.xyz/hexo-simple-mindmap-plugin-intro.html" target="_blank" rel="noopener">Hexo 的思维导图插件</a><ul>
+<li><a href="#pooki1e">Hexo 的思维导图插件</a><ul>
 <li>前言1</li>
 <li>使用方法1<ul>
 <li>1一</li>
