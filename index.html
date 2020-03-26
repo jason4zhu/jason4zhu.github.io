@@ -365,7 +365,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-26 16:26:31" itemprop="dateModified" datetime="2020-03-26T16:26:31+08:00">2020-03-26</time>
+                <time title="修改时间：2020-03-26 19:28:27" itemprop="dateModified" datetime="2020-03-26T19:28:27+08:00">2020-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -605,10 +605,25 @@
 <li><strong>核心feature</strong><ul>
 <li><strong>适用于fork-and-join并发编程模型</strong>：并行实现分治算法（Divide-and-Conquer）</li>
 <li><strong>work-stealing思想</strong>：<code>ForkJoinPool</code>为线程池中每个线程（<code>ForkJoinWorkerThread</code>）都分配了一个专属<code>WorkQueue</code>。每个线程会尽最大可能发现并执行自己队列中的task，如果空闲（eg. 等待子任务的join操作），则会尝试从其他线程的队列中steal task来完成，充分提高并发效率<ul>
-<li>核心逻辑实现类：<code>WorkQueue</code>：采用双端队列（Deque, 类似<code>LinkedBlockingDeque</code>。在<code>WorkQueue</code>中使用了<code>ForkJoinTask</code>数组），维护BASE和TOP指针，获取过程通过CAS操作（<code>Unsafe.*</code>）保证多线程下的一致性</li>
-<li>三个核心操作：push, pop, poll（a.k.a. steal）<ul>
+<li>核心逻辑实现类：<code>WorkQueue</code>：采用双端队列（Deques, 类似<code>LinkedBlockingDeque</code>。在<code>WorkQueue</code>中使用了<code>ForkJoinTask</code>数组），维护BASE和TOP指针，获取过程通过CAS操作（<code>Unsafe.*</code>）保证多线程下的一致性</li>
+<li><strong>三个核心操作</strong>：push, pop, poll（a.k.a. steal）<ul>
 <li>push和pop只允许从当前队列所属线程调用，均在栈顶（TOP）操作，符合LIFO原则</li>
 <li>poll可以从其他线程调用（steal），均在栈底（BASE）操作，符合FIFO原则</li>
+</ul>
+</li>
+<li><strong>核心策略</strong>：<ol>
+<li>task通过fork生成的subtasks只能通过push入栈，插入当前task所属工作线程的队列，当线程空闲后通过pop拉取当前队列待执行的task（LIFO）</li>
+<li>工作线程空闲，且工作线程拥有的队列也没有待执行的task时，会从其他工作线程所属队列通过poll方法steal任务来执行（FIFO，oldest-first）</li>
+<li>遇到join方法时，当前线程并不会阻塞等待子任务的完成，而是尝试执行其他任务（本地或者steal），等到join结束后主动notify线程继续推进此任务</li>
+</ol>
+</li>
+<li><strong>策略优势</strong>：<ol>
+<li>减少stealer和owner从同一个队列获取task的冲突可能性</li>
+<li>充分利用“越大的作业，越可能在队列栈底”这个前提，使得被steal的作业大概率是个big-unit-of-work, 从而能进一步在stealer端被分解执行</li>
+</ol>
+</li>
+<li><strong>图示</strong><ul>
+<li><img src="/images/post_image/forkjoinpool_work_stealing_procedure.png" alt="forkjoinpool_work_stealing_procedure"></li>
 </ul>
 </li>
 </ul>
@@ -656,17 +671,21 @@
 <li><code>ThreadLocal</code></li>
 </ul>
 <h2 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h2><ul>
-<li><strong>伪共享问题</strong><ul>
-<li><strong>定义</strong>：<ul>
+<li><p><strong>伪共享问题</strong></p>
+<ul>
+<li><p><strong>定义</strong>：</p>
+<ul>
 <li>缓存系统中是以缓存行（cache line）为单位存储的，缓存行是2^n个连续字节，一般为32-256个字节，最常见的缓存行大小是64个字节</li>
 <li>当多线程修改互相独立的变量时，如果这些变量共享同一个缓存行，就会无意中影响彼此的性能</li>
 </ul>
 </li>
-<li><strong>举例</strong>：<ul>
+<li><p><strong>举例</strong>：</p>
+<ul>
 <li>两个变量X、Y在同一个cache line。此时，Core1上的线程1更新变量X，同时Core2上的线程2更新变量Y，每个线程都要竞争缓存行的所有权（锁）来更新变量。如果Core1获得了锁，缓存系统将会使Core2中对应的缓存行失效；当Core2获得了锁，执行完成更新操作，Core1的缓存行就会失效。这会循环往复地经过L3缓存，极大影响性能。如果互相竞争的Core位于不同插槽，则性能影响更严重</li>
 </ul>
 </li>
-<li><strong>解决思路</strong>：<ul>
+<li><p><strong>解决思路</strong>：</p>
+<ul>
 <li>为了让可伸缩性与线程数呈线性关系，需要保证不会有两个线程往同一个变量或缓存行中写入</li>
 <li>JDK7中，可以通过在属性的前后人为进行padding  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">VolatileLong</span> </span>&#123;</span><br><span class="line">	<span class="keyword">volatile</span> <span class="keyword">long</span> p0, p1, p2, p3, p4, p5, p6;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">volatile</span> <span class="keyword">long</span> value = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">volatile</span> <span class="keyword">long</span> q0, q1, q2, q3, q4, q5, q6;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>JDK8中提供了<code>@sun.misc.Contended</code>注解<ul>
@@ -676,7 +695,8 @@
 </li>
 </ul>
 </li>
-<li><strong>源码级应用</strong>：<ul>
+<li><p><strong>源码级应用</strong>：</p>
+<ul>
 <li><code>ForkJoinPool.WorkQueue</code>标注了上述注解，防止线程池中，各线程对应的<code>WorkQueue</code>因频繁操作出现伪共享问题</li>
 </ul>
 </li>
