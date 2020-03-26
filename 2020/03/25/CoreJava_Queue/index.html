@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"dzhu.pro","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"right","width":300,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Java多线程 源码阅读 Thread基础类 Executor相关        源码阅读Thread基础类 Thread Runnable Callable Future  线程池 Executor 功能：An object that executes submitted Runnable tasks 目的：provides a way of decoupling task submissio">
+  <meta name="description" content="Java队列 源码阅读 Queue        源码阅读 DelayedWorkQueue  只服务于ScheduledThreadPoolExecutor [TODO 内链]、基于最小堆实现的、结合DelayQueue和PriorityQueue两种队列特性的BlockingQueue 特殊feature： 堆中记录部分task类型为ScheduledFutureTask，此对象中存储了he">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CoreCS系列：Java多线程">
-<meta property="og:url" content="https://dzhu.pro/2020/03/22/101/index.html">
+<meta property="og:title" content="CoreJava系列：队列">
+<meta property="og:url" content="https://dzhu.pro/2020/03/25/CoreJava_Queue/index.html">
 <meta property="og:site_name" content="朱迪">
-<meta property="og:description" content="Java多线程 源码阅读 Thread基础类 Executor相关        源码阅读Thread基础类 Thread Runnable Callable Future  线程池 Executor 功能：An object that executes submitted Runnable tasks 目的：provides a way of decoupling task submissio">
+<meta property="og:description" content="Java队列 源码阅读 Queue        源码阅读 DelayedWorkQueue  只服务于ScheduledThreadPoolExecutor [TODO 内链]、基于最小堆实现的、结合DelayQueue和PriorityQueue两种队列特性的BlockingQueue 特殊feature： 堆中记录部分task类型为ScheduledFutureTask，此对象中存储了he">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-22T02:30:00.000Z">
-<meta property="article:modified_time" content="2020-03-23T02:50:01.623Z">
+<meta property="article:published_time" content="2020-03-25T10:12:00.000Z">
+<meta property="article:modified_time" content="2020-03-25T15:07:20.058Z">
 <meta property="article:author" content="朱迪">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://dzhu.pro/2020/03/22/101/">
+<link rel="canonical" href="https://dzhu.pro/2020/03/25/CoreJava_Queue/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>CoreCS系列：Java多线程 | 朱迪</title>
+  <title>CoreJava系列：队列 | 朱迪</title>
   
 
 
@@ -234,7 +234,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://dzhu.pro/2020/03/22/101/">
+    <link itemprop="mainEntityOfPage" href="https://dzhu.pro/2020/03/25/CoreJava_Queue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -247,7 +247,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          CoreCS系列：Java多线程
+          CoreJava系列：队列
         </h1>
 
         <div class="post-meta">
@@ -256,16 +256,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-03-22 10:30:00" itemprop="dateCreated datePublished" datetime="2020-03-22T10:30:00+08:00">2020-03-22</time>
+              <time title="创建时间：2020-03-25 18:12:00 / 修改时间：23:07:20" itemprop="dateCreated datePublished" datetime="2020-03-25T18:12:00+08:00">2020-03-25</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-23 10:50:01" itemprop="dateModified" datetime="2020-03-23T10:50:01+08:00">2020-03-23</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -288,10 +282,9 @@
 
       
         <blockquote class="pullquote mindmap mindmap-md"><ul>
-<li>Java多线程<ul>
+<li>Java队列<ul>
 <li>源码阅读<ul>
-<li>Thread基础类</li>
-<li>Executor相关</li>
+<li>Queue</li>
 </ul>
 </li>
 </ul>
@@ -299,56 +292,24 @@
 </ul>
 </blockquote>
 
-<h1 id="源码阅读"><a href="#源码阅读" class="headerlink" title="源码阅读"></a>源码阅读</h1><h2 id="Thread基础类"><a href="#Thread基础类" class="headerlink" title="Thread基础类"></a>Thread基础类</h2><ul>
-<li><code>Thread</code></li>
-<li><code>Runnable</code></li>
-<li><code>Callable</code></li>
-<li><code>Future</code></li>
-</ul>
-<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><ul>
-<li><code>Executor</code><ul>
-<li>功能：An object that executes submitted <code>Runnable</code> tasks</li>
-<li>目的：provides a way of decoupling task submission from the mechanics of how each task will be run, including details of thread use, scheduling, etc.</li>
-<li>唯一方法：<code>void execute(Runnable command)</code></li>
-<li>核心子接口：<code>ExecutorService</code></li>
-</ul>
-</li>
-<li><code>ExecutorService</code><ul>
-<li>更丰富的<code>Executor</code>继承接口</li>
-<li>核心方法：<ul>
-<li>单个执行<ul>
-<li><code>submit</code><ul>
-<li>增强版<code>Executor.execute</code><ul>
-<li>额外提供<code>Future</code>返回值。可用于终止作业、得到作业返回值</li>
-<li>除<code>Runnable</code>对象外，同时接纳<code>Callable</code>对象</li>
-</ul>
-</li>
-<li>对于<code>Future&lt;T&gt; submit(Runnable task, T result)</code>，只是在task运行结束后，将result原封不动地封装到Future对象中<ul>
-<li>Runnable对象适配Callable实现方式：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> &lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Runnable task;</span><br><span class="line">    <span class="keyword">final</span> T result;</span><br><span class="line">    RunnableAdapter(Runnable task, T result) &#123;</span><br><span class="line">        <span class="keyword">this</span>.task = task;</span><br><span class="line">        <span class="keyword">this</span>.result = result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">call</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        task.run();</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<h1 id="源码阅读"><a href="#源码阅读" class="headerlink" title="源码阅读"></a>源码阅读</h1><ul>
+<li><p><code>DelayedWorkQueue</code></p>
+<ul>
+<li>只服务于<code>ScheduledThreadPoolExecutor</code> [TODO 内链]、基于最小堆实现的、结合<code>DelayQueue</code>和<code>PriorityQueue</code>两种队列特性的<code>BlockingQueue</code></li>
+<li>特殊feature：<ul>
+<li>堆中记录部分task类型为<code>ScheduledFutureTask</code>，此对象中存储了heapIndex（所在堆数组的位置下标）。在cancel task时，可以将（查找task、移除task）两步操作的的复杂度从O(N)降至O(logN）<ul>
+<li>查找task为O(1), 但如果task类型不为<code>ScheduledFutureTask</code>, 则降级为O(N)</li>
+<li>移除task为堆的标准siftUp, siftDown操作，复杂度O(logN)</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li>批量执行<ul>
-<li><code>invokeAll</code>: 批量执行全部task，目标是全部完成时，返回全部<code>Future</code>（调用过程中不可修改task列表）</li>
-<li><code>invokeAny</code>: 批量执行全部task，目标是完成任意一个task时，返回对应的<code>Future</code>（其他task会被cancel）（调用过程中不可修改task列表）</li>
-</ul>
+<li><p><code>Deque</code></p>
 </li>
-<li>终止Executor<ul>
-<li><code>shutdown</code>:  队列中作业可继续执行完成（但此方法不会等待，需要等待的话调用<code>awaitTermination</code>），不接受新的提交</li>
-<li><code>awaitTermination</code>: 调用<code>shutdown</code>后，等待全部作业执行完成（带timeout）</li>
-<li><code>shutdownNow</code>: 队列中作业不会执行，正在执行中的作业尝试调用<code>Thread.interrupt</code>终止</li>
-<li>终止完成时刻保证：无运行中task、无等待执行task、没有新的task可以被提交</li>
-</ul>
+<li><p><code>LinkedBlockingDeque</code></p>
 </li>
-</ul>
-</li>
-<li>工厂类：<code>Executors</code></li>
-</ul>
-</li>
-<li><code>ThreadPoolExecutor</code></li>
 </ul>
 
 <script type="text/javascript" src="/js/kity204.min.js"></script>
@@ -372,8 +333,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/03/03/hello-world/" rel="prev" title="个人记录">
-      <i class="fa fa-chevron-left"></i> 个人记录
+    <a href="/2020/03/22/CoreJava_Thread/" rel="prev" title="CoreJava系列：多线程">
+      <i class="fa fa-chevron-left"></i> CoreJava系列：多线程
     </a></div>
       <div class="post-nav-item"></div>
     </div>
@@ -435,7 +396,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#源码阅读"><span class="nav-number">1.</span> <span class="nav-text">源码阅读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Thread基础类"><span class="nav-number">1.1.</span> <span class="nav-text">Thread基础类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池"><span class="nav-number">1.2.</span> <span class="nav-text">线程池</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#源码阅读"><span class="nav-number">1.</span> <span class="nav-text">源码阅读</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
