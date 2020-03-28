@@ -233,6 +233,78 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dzhu.pro/2020/03/28/CoreJava_Map/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="朱迪">
+      <meta itemprop="description" content="Di Zhu, data architect, outdoor enthusiasts, introspectionist.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="朱迪">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/28/CoreJava_Map/" class="post-title-link" itemprop="url">CoreJava系列：Map</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-28 21:58:00 / 修改时间：22:02:15" itemprop="dateCreated datePublished" datetime="2020-03-28T21:58:00+08:00">2020-03-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>拉链法，哈希取模（hash+mod）确定元素被放置的数组下标。一般数组长度限制为2^n，这样做的好处：<code>hash(x) % arr.length</code>可以被优化为<code>hash(x) &amp; (arr.length-1)</code>，显著提升取模计算效率</p>
+
+<script type="text/javascript" src="/js/kity204.min.js"></script>
+<script type="text/javascript" src="/js/kityminder1450.core.min.js"></script>
+<script defer="true" type="text/javascript" src="/js/mindmap020.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/mindmap020.min.css">
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://dzhu.pro/2020/03/25/CoreJava_Queue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -247,7 +319,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/25/CoreJava_Queue/" class="post-title-link" itemprop="url">CoreJava系列：队列</a>
+            <a href="/2020/03/25/CoreJava_Queue/" class="post-title-link" itemprop="url">CoreJava系列：Queue</a>
         </h1>
 
         <div class="post-meta">
@@ -256,10 +328,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-03-25 18:12:00 / 修改时间：23:07:20" itemprop="dateCreated datePublished" datetime="2020-03-25T18:12:00+08:00">2020-03-25</time>
+              <time title="创建时间：2020-03-25 18:12:00" itemprop="dateCreated datePublished" datetime="2020-03-25T18:12:00+08:00">2020-03-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-28 21:59:49" itemprop="dateModified" datetime="2020-03-28T21:59:49+08:00">2020-03-28</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -365,7 +443,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-26 19:28:27" itemprop="dateModified" datetime="2020-03-26T19:28:27+08:00">2020-03-26</time>
+                <time title="修改时间：2020-03-28 22:09:53" itemprop="dateModified" datetime="2020-03-28T22:09:53+08:00">2020-03-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -401,72 +479,193 @@
 </blockquote>
 
 
-<h1 id="源码阅读"><a href="#源码阅读" class="headerlink" title="源码阅读"></a>源码阅读</h1><h2 id="Thread基础对象"><a href="#Thread基础对象" class="headerlink" title="Thread基础对象"></a>Thread基础对象</h2><p>thread affinity [todo <a href="https://blog.csdn.net/wangcg123/article/details/78551870]" target="_blank" rel="noopener">https://blog.csdn.net/wangcg123/article/details/78551870]</a></p>
-<ul>
-<li><p><code>Thread</code></p>
-<ul>
-<li><code>ThreadLocal</code></li>
-<li><code>ThreadGroup</code></li>
+<h1 id="源码阅读"><a href="#源码阅读" class="headerlink" title="源码阅读"></a>源码阅读</h1><h2 id="多线程并发基础对象"><a href="#多线程并发基础对象" class="headerlink" title="多线程并发基础对象"></a>多线程并发基础对象</h2><h3 id="核心类关系图"><a href="#核心类关系图" class="headerlink" title="核心类关系图"></a>核心类关系图</h3><h4 id="Runnable相关"><a href="#Runnable相关" class="headerlink" title="Runnable相关"></a>Runnable相关</h4><p><img src="/images/post_image/hierarchy_runnable.png" alt="hierarchy_runnable"></p>
+<h4 id="Callable相关"><a href="#Callable相关" class="headerlink" title="Callable相关"></a>Callable相关</h4><p><img src="/images/post_image/hierarchy_callable.png" alt="hierarchy_callable"></p>
+<h4 id="Future相关"><a href="#Future相关" class="headerlink" title="Future相关"></a>Future相关</h4><p><img src="/images/post_image/hierarchy_future.png" alt="hierarchy_future"></p>
+<h3 id="核心类"><a href="#核心类" class="headerlink" title="核心类"></a>核心类</h3><h4 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h4><ul>
+<li><strong>功能</strong>：线程最核心、基础类</li>
+<li><strong>特点</strong>：<ul>
+<li>基础并发类（JDK1.4以前即存在，属于<code>java.lang.*</code>包）</li>
+<li>继承自<code>Runnable</code>接口</li>
 </ul>
 </li>
-<li><p><code>ThreadGroup</code></p>
+<li><strong>属性</strong>：<ul>
+<li>name<ul>
+<li>线程名称（名字可重复，不强制唯一）</li>
+</ul>
 </li>
-<li><p><code>Runnable</code> &amp;&amp; <code>Callable</code></p>
+<li>priority<ul>
+<li>线程优先级，最高10，最低1；优先级越高，更优先获取计算资源</li>
+<li>子线程优先级默认继承父线程优先级</li>
+</ul>
+</li>
+<li><a href="#ThreadGroup">ThreadGroup</a><ul>
+<li><a href="#ThreadGroup">线程组</a>，默认继承父线程ThreadGroup信息</li>
+</ul>
+</li>
+<li>daemon<ul>
+<li>守护线程，默认低优先级，在后台独立运行（eg. GC线程）</li>
+<li>如果non-daemon线程都运行结束，则无论是否还有daemon线程运行，JVM都会终止</li>
+<li>子线程daemon属性默认继承父线程daemon属性</li>
+</ul>
+</li>
+<li><a href="#ThreadLocal">ThreadLocalMap</a><a name="anchor_java_thread_threadlocal"></a><ul>
+<li>每个线程均有属于当前线程的<code>ThreadLocalMap</code>对象，用于存储线程范围内的KVs对象</li>
+<li>一个线程中存在两个<code>ThreadLocalMap</code>对象：threadLocals，和inheritableThreadLocals<ul>
+<li>前者在线程创建时初始化成一个空Map</li>
+<li>后者在线程创建时继承父线程inheritableThreadLocals变量中全部KVs对象</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>使用的两种方式</strong>：<ol>
+<li>继承<code>Thread</code>类，复写<code>run</code>方法</li>
+<li>实现<code>Runnable</code>接口，初始化Thread对象时传入刚刚创建的<code>Runnable</code>实例</li>
+</ol>
+</li>
+<li><strong>线程状态</strong>：<ul>
+<li><strong>声明位置</strong>：<ul>
+<li><code>Thread.State</code>内部类</li>
+</ul>
+</li>
+<li><strong>状态值</strong>：<ul>
+<li>NEW<ul>
+<li>还没有调用<code>start()</code>方法的、新创建的Thread对象</li>
+</ul>
+</li>
+<li>RUNNABLE<ul>
+<li>运行状态的Thread，可能会不定时在操作系统层获取/释放CPU时间分片</li>
+</ul>
+</li>
+<li>BLOCKED<ul>
+<li>线程执行到某步，等到获得锁（monitor lock）</li>
+</ul>
+</li>
+<li>WAITING<ul>
+<li>线程中调用了<code>join()</code>, <code>wait()</code>方法</li>
+</ul>
+</li>
+<li>TIMED_WAITING<ul>
+<li>线程中调用了<code>sleep(time)</code>, <code>join(timeout)</code>, <code>wait(timeout)</code>方法</li>
+</ul>
+</li>
+<li>TERMINATED<ul>
+<li>线程运行完成，已结束</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>线程状态转换FSM</strong>：<ul>
+<li><strong>Java线程状态</strong>：<ul>
+<li><img src="/images/post_image/java_thread_state_FSM.jpeg" alt="thread_state_FSM"></li>
+</ul>
+</li>
+<li><strong>操作系统线程状态</strong>：<ul>
+<li><img src="/images/post_image/system_thread_state_FSM.jpeg" alt="thread_state_FSM"></li>
+</ul>
+</li>
+<li><strong>差异点</strong>：<ol>
+<li>操作系统级线程的ready和running两个状态，在Java线程状态中被封装为统一的RUNNABLE状态，底层CPU时间分片的分发对上层Java应用透明</li>
+<li>操作系统中，粗粒度的waiting状态，在Java中被细分为WAITING，TIMED_WAITING，和BLOCKED三个由不同原因触发的等待状态</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="ThreadGroup"><a href="#ThreadGroup" class="headerlink" title="ThreadGroup"></a>ThreadGroup</h4><ul>
+<li><strong>功能</strong>：线程组，表示一系列线程的集合</li>
+<li><strong>特点</strong>：<ul>
+<li>基础并发类（JDK1.4以前即存在，属于<code>java.lang.*</code>包）</li>
+<li>子节点可为线程，也可为其他的线程组（形成一棵树结构：除初始化的线程组之外，所有线程和线程组均有父节点）</li>
+<li>新创建的线程组，默认使用当前线程所在线程组，作为父节点</li>
+</ul>
+</li>
+</ul>
+<h4 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h4><ul>
+<li><strong>功能</strong>：提供thread-local级别的变量存储，每个线程在调用<code>ThreadLocal.get/set</code>方法时，获取到的对象都是线程独有的</li>
+<li><strong>特点</strong>：<ul>
+<li>基础并发类（JDK1.4以前即存在，属于<code>java.lang.*</code>包）</li>
+</ul>
+</li>
+<li><strong>实现原理</strong>：<ul>
+<li><strong><code>ThreadLocal.get</code>方法举例（set方法类似）</strong><ul>
+<li>每个<a href="#anchor_java_thread_threadlocal">线程内部都存在私有的<code>ThreadLocalMap</code>对象</a>: threadLocals（访问控制级别为default，相同package内的类均可以直接访问）</li>
+<li>在调用<code>ThreadLocal.get</code>方法时，会直接调用<code>Thread.currentThread().threadLocals</code>，拿到当前线程对应的<code>ThreadLocalMap</code>对象</li>
+<li><code>ThreadLocalMap</code>对象为自定义的hashmap封装，负责KV存储，key为<code>ThreadLocal</code>实例，value为当前<code>ThreadLocal</code>产出的线程独有的对象</li>
+</ul>
+</li>
+<li><strong>总结</strong>：<ul>
+<li>每个线程都有独享的<code>ThreadLocalMap</code>内部变量，用于KV存储。Key为ThreadLocal实例，Value为对应的ThreadLocal封装的对象</li>
+<li>对于同一个<code>ThreadLocal</code>实例，会以Key的形式存在于多个线程的多个<code>ThreadLocalMap</code>里</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>示例</strong>：<ul>
+<li>为每个线程提供unique ID的实现类（不同线程获取到的ID一定不同，同一个线程多次获取到的ID相同）：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadId</span> </span>&#123;</span><br><span class="line">	<span class="comment">// Atomic integer containing the next thread ID to be assigned</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> AtomicInteger nextId = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line">	<span class="comment">// Thread local variable containing each thread's ID</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ThreadLocal&lt;Integer&gt; threadId =</span><br><span class="line">		<span class="keyword">new</span> ThreadLocal&lt;Integer&gt;() &#123;</span><br><span class="line">			<span class="meta">@Override</span> <span class="function"><span class="keyword">protected</span> Integer <span class="title">initialValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="keyword">return</span> nextId.getAndIncrement();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="comment">// Returns the current thread's unique ID, assigning it if necessary</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> threadId.get();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><strong>高级设计细节</strong><ul>
+<li><strong>ThreadLocalMap.Entry为何声明为WeakReference</strong><ul>
+<li><strong>实现</strong><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span> <span class="keyword">extends</span> <span class="title">WeakReference</span>&lt;<span class="title">ThreadLocal</span>&lt;?&gt;&gt; </span>&#123;</span><br><span class="line">	Object value;</span><br><span class="line">	Entry(ThreadLocal&lt;?&gt; k, Object v) &#123;</span><br><span class="line">		<span class="keyword">super</span>(k);</span><br><span class="line">		value = v;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><strong>解释</strong><ul>
+<li>将对应的key（<code>ThreadLocal</code>对象）声明为弱引用。也即，ThreadLocal对象在没有任何强引用之后，即使有弱引用，也会被下次的gc回收</li>
+<li>对于上述示例，如果将<code>threadId</code>变量置为null，则残留在各个线程内部变量<code>ThreadLocalMap</code>中的、以<code>threadId</code>为key的项，都变为了stale entry，需要被及时清理。如果此处为强引用，则由于部分线程的<code>ThreadLocalMap</code>中还有对<code>threadId</code>的引用，导致内存泄漏</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Runnable"><a href="#Runnable" class="headerlink" title="Runnable"></a>Runnable</h4><ul>
+<li><strong>功能</strong>：</li>
+<li><strong>特点</strong>：<ul>
+<li>基础并发类（JDK1.4以前即存在，属于<code>java.lang.*</code>包）</li>
+</ul>
+</li>
+</ul>
+<h4 id="Callable"><a href="#Callable" class="headerlink" title="Callable"></a>Callable</h4><ul>
+<li><strong>功能</strong>：</li>
+<li><strong>特点</strong>：<ul>
+<li>拓展并发类（JDK1.5以后增加，属于<code>java.util.concurrent.*</code>包）</li>
+</ul>
+</li>
+</ul>
 <ul>
-<li>Runnable对象适配Callable实现方式：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> &lt;<span class="title">T</span>&gt; <span class="title">RunnableAdapter</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Runnable task;</span><br><span class="line">    <span class="keyword">final</span> T result;</span><br><span class="line">    RunnableAdapter(Runnable task, T result) &#123;</span><br><span class="line">        <span class="keyword">this</span>.task = task;</span><br><span class="line">        <span class="keyword">this</span>.result = result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">call</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        task.run();</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><code>Future</code></p>
-</li>
-<li><p><code>RunnableFuture</code> [TODO ] </p>
-</li>
-<li><p><code>FutureTask</code> [TODO ]</p>
-</li>
-<li><p><code>ScheduledFutureTask</code> [TODO 放到ScheduledThreadPoolExecutor里]</p>
+<li><code>Runnable</code> &amp;&amp; <code>Callable</code><ul>
+<li>Runnable对象适配Callable实现方式：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> &lt;<span class="title">T</span>&gt; <span class="title">RunnableAdapter</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">final</span> Runnable task;</span><br><span class="line">	<span class="keyword">final</span> T result;</span><br><span class="line">	RunnableAdapter(Runnable task, T result) &#123;</span><br><span class="line">		<span class="keyword">this</span>.task = task;</span><br><span class="line">		<span class="keyword">this</span>.result = result;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">call</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		task.run();</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-<p><img src="/images/post_image/hierarchy_callable.png" alt="hierarchy_callable"><br><img src="/images/post_image/hierarchy_future.png" alt="hierarchy_future"></p>
-<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><blockquote>
-<ul>
-<li><strong>核心类关系图</strong><ul>
-<li><img src="/images/post_image/hierarchy_executor.png" alt="hierarchy_executor"></li>
-</ul>
 </li>
-<li><strong>优势</strong><ul>
+</ul>
+<h4 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h4><h4 id="RunnableFuture"><a href="#RunnableFuture" class="headerlink" title="RunnableFuture"></a>RunnableFuture</h4><h4 id="FutureTask"><a href="#FutureTask" class="headerlink" title="FutureTask"></a>FutureTask</h4><h4 id="ScheduledFutureTask"><a href="#ScheduledFutureTask" class="headerlink" title="ScheduledFutureTask"></a>ScheduledFutureTask</h4><p>[TODO 放到ScheduledThreadPoolExecutor里]</p>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ul>
 <li>多异步作业下，通过复用线程提升效率（reduce per-task invocation overhead）</li>
 <li>更有效地管理计算资源、提供统计数据等</li>
 </ul>
-</li>
-</ul>
-</blockquote>
-<ul>
-<li><p><strong><code>Executor</code></strong> </p>
-<ul>
-<li><ul>
-<li><em>功能*</em>：An object that executes submitted <code>Runnable</code> tasks</li>
-</ul>
-</li>
+<h3 id="核心类关系图-1"><a href="#核心类关系图-1" class="headerlink" title="核心类关系图"></a>核心类关系图</h3><p><img src="/images/post_image/hierarchy_executor.png" alt="hierarchy_executor"></p>
+<h3 id="核心类-1"><a href="#核心类-1" class="headerlink" title="核心类"></a>核心类</h3><h4 id="Executor"><a href="#Executor" class="headerlink" title="Executor"></a>Executor</h4><ul>
+<li><strong>功能</strong>：An object that executes submitted <code>Runnable</code> tasks</li>
 <li><strong>目的</strong>：provides a way of decoupling task submission from the mechanics of how each task will be run, including details of thread use, scheduling, etc.</li>
 <li><strong>唯一方法</strong>：<code>void execute(Runnable command)</code></li>
 <li><strong>核心子接口</strong>：<code>ExecutorService</code></li>
 </ul>
-</li>
-<li><p><strong><code>ExecutorService</code></strong> </p>
-<ul>
-<li>更丰富的<code>Executor</code>继承接口</li>
+<h4 id="ExecutorService"><a href="#ExecutorService" class="headerlink" title="ExecutorService"></a>ExecutorService</h4><ul>
+<li><strong>功能</strong>：更丰富的<code>Executor</code>继承接口</li>
 <li><strong>核心方法</strong>：<ul>
 <li><strong>单task执行</strong><ul>
-<li><code>submit</code><ul>
-<li>增强版<code>Executor.execute</code><ul>
-<li>额外提供<code>Future</code>返回值。可用于终止作业、得到作业返回值<ul>
+<li><code>submit</code>（增强版<code>Executor.execute</code>）<ul>
+<li>额外提供<code>Future</code>返回值。可用于终止作业、得到作业返回值</li>
 <li>除<code>Runnable</code>对象外，同时接纳<code>Callable</code>对象</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
 <li>对于<code>Future&lt;T&gt; submit(Runnable task, T result)</code>，只是在task运行结束后，将result原封不动地封装到Future对象中</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>批量执行</strong><ul>
@@ -485,10 +684,8 @@
 </li>
 <li><strong>工厂类</strong>：<code>Executors</code></li>
 </ul>
-</li>
-<li><p><strong><code>ThreadPoolExecutor</code></strong> </p>
-<ul>
-<li>线程池最常用、核心的实现类</li>
+<h4 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h4><ul>
+<li><strong>功能</strong>：线程池最常用、核心的实现类</li>
 <li><strong>构造器核心参数</strong><ul>
 <li><strong>int corePoolSize</strong><ul>
 <li>最少会保留的idle thread数量（用完后也不销毁）</li>
@@ -512,12 +709,12 @@
 </ul>
 </li>
 <li><strong>RejectedExecutionHandler handler</strong><ul>
-<li>触发条件<ul>
+<li><strong>触发条件</strong><ul>
 <li>当线程池中的线程全部被占用，且workQueue已满时，再提交task会进入此handler</li>
 <li><code>ExecutorService</code>在shutdown过程中，再提交task也会进入此handler</li>
 </ul>
 </li>
-<li>策略<ul>
+<li><strong>策略</strong><ul>
 <li><code>AbortPolicy</code>: 默认策略，直接抛异常</li>
 <li><code>CallerRunsPolicy</code>: 调用<code>ExecutorService.execute(task)</code>方法的线程执行task（反压限流）</li>
 <li><code>DiscardPolicy</code>: 直接丢弃，drop-silently</li>
@@ -556,17 +753,15 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p><strong><code>ScheduledThreadPoolExecutor</code></strong> </p>
-<ul>
-<li>可以延迟执行，或者周期性执行task的<code>ThreadPoolExecutor</code><ul>
+<h4 id="ScheduledThreadPoolExecutor"><a href="#ScheduledThreadPoolExecutor" class="headerlink" title="ScheduledThreadPoolExecutor"></a>ScheduledThreadPoolExecutor</h4><ul>
+<li><strong>功能</strong>：可以延迟执行，或者周期性执行task的<code>ThreadPoolExecutor</code><ul>
 <li>延迟作业(Delayed task)只能保证no-sooner-than语义，不能保证exactly-at-specific-time</li>
-<li>corePoolSize不要设为0，<code>allowCoreThreadTimeOut</code>不要设为true。由于周期性调度完会将task放回queue中，其表现为一个（永远有等待task的队列+有corePoolSize线程）的线程池，所以设置maximumPoolSize参数不会起到任何效果</li>
+<li>corePoolSize不要设为0，<code>allowCoreThreadTimeOut</code>不要设为true。由于周期性调度完会将task放回queue中，其表现为一个（永远有等待task的队列+有corePoolSize线程）的线程池，所以maximumPoolSize参数不会起到任何效果</li>
 </ul>
 </li>
 <li><strong>构造器核心参数</strong><ul>
 <li>与<code>ThreadPoolExecutor</code>参数一致，两个不同点：<ol>
-<li>workQueue固定为<code>DelayedWorkQueue</code> [todo 内链]</li>
+<li>workQueue固定为<code>DelayedWorkQueue</code> [TODO 内链]</li>
 <li>不再需要设置<code>maximumPoolSize</code>（同理，不再有<code>long keepAliveTime</code>和<code>TimeUnit unit</code>）</li>
 </ol>
 </li>
@@ -579,15 +774,13 @@
 </li>
 <li>周期性执行<ul>
 <li><code>scheduleAtFixedRate</code><ul>
-<li>间隔相同period时间执行task（period: 当前task启动时刻与下一次task启动时刻间隔）<ul>
+<li>间隔相同period时间执行task（period: 当前task启动时刻与下一次task启动时刻间隔）</li>
 <li>如果task运行时间大于period，则下一个task会等待前者完成后再调度，不会重叠调度</li>
 <li>如果执行某次task抛异常，则后续调度直接停止调度</li>
 </ul>
 </li>
-</ul>
-</li>
 <li><code>scheduleWithFixedDelay</code><ul>
-<li>间隔相同delay时间执行task（delay: 当前task结束时刻与下一次task启动时刻间隔）<ul>
+<li>间隔相同delay时间执行task（delay: 当前task结束时刻与下一次task启动时刻间隔）</li>
 <li>如果执行某次task抛异常，则后续调度直接停止调度</li>
 </ul>
 </li>
@@ -596,16 +789,12 @@
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p><strong><code>ForkJoinPool</code></strong> </p>
-<ul>
-<li>用来执行<code>ForkJoinTask</code>的专用线程池</li>
+<h4 id="ForkJoinPool"><a href="#ForkJoinPool" class="headerlink" title="ForkJoinPool"></a>ForkJoinPool</h4><ul>
+<li><strong>功能</strong>：用来执行<code>ForkJoinTask</code>的专用线程池</li>
 <li><strong>核心feature</strong><ul>
 <li><strong>适用于fork-and-join并发编程模型</strong>：并行实现分治算法（Divide-and-Conquer）</li>
 <li><strong>work-stealing思想</strong>：<code>ForkJoinPool</code>为线程池中每个线程（<code>ForkJoinWorkerThread</code>）都分配了一个专属<code>WorkQueue</code>。每个线程会尽最大可能发现并执行自己队列中的task，如果空闲（eg. 等待子任务的join操作），则会尝试从其他线程的队列中steal task来完成，充分提高并发效率<ul>
-<li>核心逻辑实现类：<code>WorkQueue</code>：采用双端队列（Deques, 类似<code>LinkedBlockingDeque</code>。在<code>WorkQueue</code>中使用了<code>ForkJoinTask</code>数组），维护BASE和TOP指针，获取过程通过CAS操作（<code>Unsafe.*</code>）保证多线程下的一致性</li>
+<li><strong>核心逻辑实现类</strong>：<code>WorkQueue</code>：采用双端队列（Deques, 类似<code>LinkedBlockingDeque</code>。在<code>WorkQueue</code>中使用了<code>ForkJoinTask</code>数组），维护BASE和TOP指针，获取过程通过CAS操作（<code>Unsafe.*</code>）保证多线程下的一致性</li>
 <li><strong>三个核心操作</strong>：push, pop, poll（a.k.a. steal）<ul>
 <li>push和pop只允许从当前队列所属线程调用，均在栈顶（TOP）操作，符合LIFO原则</li>
 <li>poll可以从其他线程调用（steal），均在栈底（BASE）操作，符合FIFO原则</li>
@@ -622,13 +811,16 @@
 <li>充分利用“越大的作业，越可能在队列栈底”这个前提，使得被steal的作业大概率是个big-unit-of-work, 从而能进一步在stealer端被分解执行</li>
 </ol>
 </li>
-<li><strong>图示</strong><ul>
+<li><strong>图示</strong>：<ul>
 <li><img src="/images/post_image/forkjoinpool_work_stealing_procedure.png" alt="forkjoinpool_work_stealing_procedure"></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><strong>通用<code>ForkJoinPool</code>实例</strong>：jdk8中，<code>ForkJoinPool</code>提供了默认的commonPool，用来处理没有被显式提交到任何线程池的任务。e.g. java stream API的自动并行化：<code>List&lt;Integer&gt;.parallelStream().forEach(out::println)</code></li>
+<li><strong>通用<code>ForkJoinPool</code>实例</strong>：<ul>
+<li>jdk8中，<code>ForkJoinPool</code>提供了默认的commonPool，用来处理没有被显式提交到任何线程池的任务（e.g. java stream API的自动并行化：<code>List.parallelStream().forEach(out::println)</code>）</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>数据结构</strong><ul>
@@ -654,9 +846,10 @@
 </ul>
 </li>
 </ul>
-</li>
-</ul>
+<h4 id="Executors"><a href="#Executors" class="headerlink" title="Executors"></a>Executors</h4><p>[TODO ]<br>固定线程数的线程池：newFixedThreadPool<br>单个线程的线程池：newSingleThreadExecutor<br>可缓存的线程池：newCachedThreadPool<br>可延时/周期调度的线程池：newScheduledThreadPool<br>Fork/Join线程池：newWorkStealingPool，在Java 1.7时才引入，其核心实现就是ForkJoinPool类</p>
 <h2 id="同步机制"><a href="#同步机制" class="headerlink" title="同步机制"></a>同步机制</h2><ul>
+<li>synchronized</li>
+<li>volatile</li>
 <li><code>ReentrantLock</code> &amp;&amp; <code>Condition</code> [TODO evernote知识点]<ul>
 <li><a href="https://www.baeldung.com/java-concurrent-locks" target="_blank" rel="noopener">https://www.baeldung.com/java-concurrent-locks</a></li>
 <li><a href="https://www.zoftino.com/java-concurrency-lock-and-condition-examples" target="_blank" rel="noopener">https://www.zoftino.com/java-concurrency-lock-and-condition-examples</a></li>
@@ -665,18 +858,18 @@
 <li>AQS：<code>AbstractQueuedSynchronizer</code> [TODO evernote知识点]</li>
 <li><code>Atomic*</code></li>
 <li>CAS：<code>Unsafe.compareAndSwap*</code></li>
-<li>volatile</li>
-<li>synchronized</li>
 <li><code>Object.wait</code>, <code>Object.notify</code></li>
+<li>无锁方案<ul>
 <li><code>ThreadLocal</code></li>
+<li>不可变对象（Immutable Object）</li>
 </ul>
-<h2 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h2><ul>
-<li><p><strong>伪共享问题</strong></p>
-<ul>
+</li>
+</ul>
+<h2 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h2><h3 id="伪共享（false-sharing）"><a href="#伪共享（false-sharing）" class="headerlink" title="伪共享（false sharing）"></a>伪共享（false sharing）</h3><ul>
 <li><p><strong>定义</strong>：</p>
 <ul>
 <li>缓存系统中是以缓存行（cache line）为单位存储的，缓存行是2^n个连续字节，一般为32-256个字节，最常见的缓存行大小是64个字节</li>
-<li>当多线程修改互相独立的变量时，如果这些变量共享同一个缓存行，就会无意中影响彼此的性能</li>
+<li>当多线程修改互相独立的变量时，如果这些变量共享同一个缓存行，就会无意中影响彼此的性能（performance degradation when several threads are modifying independent variables sharing the same cache line）</li>
 </ul>
 </li>
 <li><p><strong>举例</strong>：</p>
@@ -695,14 +888,13 @@
 </li>
 </ul>
 </li>
-<li><p><strong>源码级应用</strong>：</p>
+<li><p><strong>源码级应用</strong>：        </p>
 <ul>
 <li><code>ForkJoinPool.WorkQueue</code>标注了上述注解，防止线程池中，各线程对应的<code>WorkQueue</code>因频繁操作出现伪共享问题</li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
+<h3 id="Thread-Affinity"><a href="#Thread-Affinity" class="headerlink" title="Thread Affinity"></a>Thread Affinity</h3><p>thread affinity [todo <a href="https://blog.csdn.net/wangcg123/article/details/78551870]" target="_blank" rel="noopener">https://blog.csdn.net/wangcg123/article/details/78551870]</a></p>
 <h1 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h1><p>[TODO ]</p>
 <ul>
 <li><code>ForkJoinPool</code><ul>
@@ -712,7 +904,6 @@
 </ul>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
 <li><a href="http://gee.cs.oswego.edu/dl/papers/fj.pdf" target="_blank" rel="noopener">A Java Fork/Join Framework - Doug Lea</a></li>
-<li></li>
 </ul>
 
 <script type="text/javascript" src="/js/kity204.min.js"></script>
